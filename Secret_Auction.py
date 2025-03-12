@@ -1,5 +1,3 @@
-# Python-Projects
-Short dynamic python projects
 
 def highest_bid(bidding_dictionary):
     highest_bid = 0
