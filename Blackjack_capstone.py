@@ -22,9 +22,29 @@ def calculate_score(cards):
     """ take some cards as input and calculate the total"""
     return sum(cards)
 
+def compare(user_score, computer_score):
+    if user_score == computer_score:
+        return "Draw"
+    elif computer_score == 0:
+        return "Lose, opponent has blackjack"
+    elif user_score == 0:
+        return "win with a blackjack"
+    elif user_score> 21:
+        return "you went over, you lose"
+    elif computer_score>21:
+        return "opponent went over, you win"
+    elif user_score>computer_score:
+        return "you win"
+    else:
+        return "you lose"
+
+
 
 user_cards = []
 computer_cards = []
+computer_score = -1
+is_game_over = False
+user_score = -1
 
 is_game_over = False
 for i in range(0, 2):
@@ -44,4 +64,12 @@ while not is_game_over:
            user_cards.append(deal_card())
         else:
             is_game_over = True
+
+while computer_score != 0 and computer_score<17:
+    computer_cards.append((deal_card()))
+    computer_score = calculate_score(computer_cards)
+
+print(compare(computer_score, user_score))
+
+
 
